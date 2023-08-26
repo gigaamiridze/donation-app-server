@@ -1,0 +1,25 @@
+{
+  "name": "donation-app-server",
+  "version": "1.0.0",
+  "description": "Donation app server using Node with TypeScript, Express, and Stripe",
+  "main": "./src/app.ts",
+  "scripts": {
+    "dev": "nodemon ./src/app.ts",
+    "start": "node ./dist/app.js"
+  },
+  "keywords": [
+    "Donation App",
+    "TypeScript",
+    "Node",
+    "Express",
+    "Stripe"
+  ],
+  "author": "gigaamiridze",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.5.6",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
