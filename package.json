@@ -1,14 +1,14 @@
 {
-  "name": "donation-app-server",
+  "name": "stripe-payment",
   "version": "1.0.0",
-  "description": "Donation app server using Node with TypeScript, Express, and Stripe",
+  "description": "Stripe payment using Node with TypeScript, Express, and Stripe",
   "main": "./src/app.ts",
   "scripts": {
     "dev": "nodemon ./src/app.ts",
     "start": "node ./dist/app.js"
   },
   "keywords": [
-    "Donation App",
+    "Payment",
     "TypeScript",
     "Node",
     "Express",
@@ -17,6 +17,11 @@
   "author": "gigaamiridze",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.11",
+    "@babel/node": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/runtime": "^7.22.11",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/morgan": "^1.9.5",
@@ -27,7 +32,9 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "stripe": "^13.3.0"
   }
 }
