@@ -8,3 +8,9 @@ To make this setup work on your local setup please run
 
 If you want to start the server just type
 ``npm run dev`` or ``yarn dev``
+
+In project root folder create **.env** file with this content:
+
+    PORT=5000
+    STRIPE_PUBLISHABLE_KEY='your publishable key'
+    STRIPE_SECRET_KEY='your secret key'
