@@ -1,4 +1,4 @@
-## Donation App Server
+## Stripe Payment
 This server side project created for mobile donation app written in React Native
 
 React Native source code: [Here](https://github.com/gigaamiridze/donation-app)
