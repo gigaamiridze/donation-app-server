@@ -1,20 +1,20 @@
-import express, { Application, Request, Response } from 'express';
+import { onRequest } from 'firebase-functions/v2/https';
+import * as express from 'express';
+import * as morgan from 'morgan';
+import * as cors from 'cors';
 import Stripe from 'stripe';
-import morgan from 'morgan';
-import cors from 'cors';
-import { PORT, STRIPE_PUBLISHABLE_KEY, STRIPE_SECRET_KEY } from './env';
 
-const app: Application = express();
+const app = express();
 
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.post('/create-payment-intent', async (req: Request, res: Response) => {
+app.post('/create-payment-intent', async (req, res) => {
   const { email, currency, amount } = req.body;
 
-  if (STRIPE_SECRET_KEY) {
-    const stripe = new Stripe(STRIPE_SECRET_KEY, {
+  if (process.env.STRIPE_SECRET_KEY) {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
       apiVersion: '2023-08-16',
     });
 
@@ -44,8 +44,10 @@ app.post('/create-payment-intent', async (req: Request, res: Response) => {
       });
     }
   }
+
+  return res.status(500).send({
+    error: 'Stripe secret key is missing or invalid.',
+  });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+export const stripePayment = onRequest({ maxInstances: 10 }, app);
